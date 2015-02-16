@@ -1,0 +1,13 @@
+= link_to "New Course", new_course_path, class: "button"
+
+.row
+  .large-6.columns
+    %h2 Name
+  .large-6.columns
+    %h2 Description
+.row
+- @courses.each do |course|
+  .large-6.columns
+    = course.name
+  .large-6.columns
+    = course.description

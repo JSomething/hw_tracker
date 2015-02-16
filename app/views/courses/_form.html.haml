@@ -1,0 +1,20 @@
+= form_for [@course] do |c|
+  %form
+    .row
+      .large-12.columns
+        = c.label :name, class: 'label'
+        = c.text_field :name
+    .row
+      .large-12.columns
+        = c.label :description, class: 'label'
+        = c.text_field :description
+    = hidden_field_tag 'course[location_ids][]', ''
+    .row
+      .large-12.columns
+        -@locations.each do |location|
+          = check_box_tag 'course[location_ids][]', location.id, @course.locations.include?(location)
+          = location.location_name
+    .row
+      .small-6.columns
+        = c.submit "Add Course", class: "button"
+

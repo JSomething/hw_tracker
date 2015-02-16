@@ -1,0 +1,33 @@
+%nav.top-bar{"data-topbar" => "", :role => "navigation"}
+  %ul.title-area
+    %li.name
+      %h1
+        = link_to('TRACKER', root_path)
+    / Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone
+    %li.toggle-topbar.menu-icon
+      %a{:href => "#"}
+        %span Menu
+  %section.top-bar-section
+    / Right Nav Section
+    %ul.right
+      %li.has-dropdown
+        %a
+          - if signed_in?(:user)
+            = current_user.email
+          - else
+            = User
+        %ul.dropdown
+          = render 'devise/menu/registration_items'
+          = render 'devise/menu/login_items'
+    / Left Nav Section
+    %ul.left
+      %li
+        = link_to "Users", users_path
+      %li
+        = link_to "Locations", locations_path
+      %li
+        = link_to "Courses", courses_path
+      %li
+        = link_to "Assignments", '#'
+      %li
+        = link_to("Add a Class", user_path(current_user))

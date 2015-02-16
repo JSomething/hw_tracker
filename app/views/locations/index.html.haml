@@ -1,0 +1,7 @@
+= link_to "Add Location", new_location_path, class: "button"
+.row
+- @locations.each do |location|
+  .large-6.columns
+    = location.location_name
+  .large-6.columns
+    = location.location_address
